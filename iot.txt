@@ -1,0 +1,2 @@
+https://xampp/htdocs/iot
+D:\xampp\htdocs\ito
