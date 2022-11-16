@@ -11,7 +11,7 @@ if(isset($_REQUEST['users']) && isset($_REQUEST['pass'])){
     //$comando = $conexion ->prepare("SELECT * FROM users WHERE users='$u'AND pass='$p'");
     $comando = $conexion ->prepare("SELECT users,role FROM users WHERE users=:u AND pass=:p");
     $comando->bindValue(":u", $u);
-    $comando->bindValue(":p",md5($p));
+    $comando->bindValue(":p", md5($p));
     $comando->execute();
     $comando -> setFetchMode(PDO:: FETCH_ASSOC);
     $resultado = $comando -> fetch();
@@ -26,7 +26,6 @@ if(isset($_REQUEST['users']) && isset($_REQUEST['pass'])){
     }
     echo json_encode($resultado);
 }else{
-    $resultado= ["status"=>"error"];
-
+    header(("HTTP/1.1 400 Bad Request"));
     }
 
